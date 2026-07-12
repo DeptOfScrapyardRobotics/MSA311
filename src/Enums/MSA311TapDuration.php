@@ -1,6 +1,6 @@
 <?php
 
-namespace DeptOfScrapyardRobotics\Sensors\MSA3xx\MSA311\Enums;
+namespace DeptOfScrapyardRobotics\Sensors\MSA311\Enums;
 
 /**
  * Double-tap detection window — stored in TAP_DURATION (0x2A) bits [2:0].

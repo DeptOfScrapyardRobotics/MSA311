@@ -1,6 +1,6 @@
 <?php
 
-namespace DeptOfScrapyardRobotics\Sensors\MSA3xx\MSA311\Enums;
+namespace DeptOfScrapyardRobotics\Sensors\MSA311\Enums;
 
 /**
  * Output data rate (ODR) — stored in ODR (0x10) bits [3:0].

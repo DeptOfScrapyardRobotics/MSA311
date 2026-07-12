@@ -1,8 +1,8 @@
 <?php
 
-namespace DeptOfScrapyardRobotics\Sensors\MSA3xx\MSA311\DataObjects;
+namespace DeptOfScrapyardRobotics\Sensors\MSA311\DataObjects;
 
-use BareMetal\DataObjects\DataRegister;
+use BareMetal\Circuits\DataRegister;
 
 /**
  * MOTION_INTERRUPT (0x09) — read-only motion event status.

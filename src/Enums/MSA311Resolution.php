@@ -1,6 +1,6 @@
 <?php
 
-namespace DeptOfScrapyardRobotics\Sensors\MSA3xx\MSA311\Enums;
+namespace DeptOfScrapyardRobotics\Sensors\MSA311\Enums;
 
 /**
  * ADC output resolution — stored in RANGE_RESOLUTION (0x0F) bits [3:2].

@@ -1,6 +1,6 @@
 <?php
 
-namespace DeptOfScrapyardRobotics\Sensors\MSA3xx\MSA311\Enums;
+namespace DeptOfScrapyardRobotics\Sensors\MSA311\Enums;
 
 /**
  * Low-power mode bandwidth — stored in POWER_MODE_BANDWIDTH (0x11) bits [4:1].

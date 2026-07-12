@@ -1,10 +1,10 @@
 <?php
 
-namespace DeptOfScrapyardRobotics\Sensors\MSA3xx\MSA311\DataObjects;
+namespace DeptOfScrapyardRobotics\Sensors\MSA311\Breakouts;
 
-use BareMetal\DataObjects\DataRegister;
-use DeptOfScrapyardRobotics\Sensors\MSA3xx\MSA311\Enums\MSA311Bandwidth;
-use DeptOfScrapyardRobotics\Sensors\MSA3xx\MSA311\Enums\MSA311PowerMode;
+use BareMetal\Circuits\DataRegister;
+use DeptOfScrapyardRobotics\Sensors\MSA311\Enums\MSA311Bandwidth;
+use DeptOfScrapyardRobotics\Sensors\MSA311\Enums\MSA311PowerMode;
 
 /**
  * POWER_MODE_BANDWIDTH (0x11)

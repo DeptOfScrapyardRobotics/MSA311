@@ -1,8 +1,9 @@
 <?php
 
-namespace DeptOfScrapyardRobotics\Sensors\MSA3xx\MSA311\DataObjects;
+namespace DeptOfScrapyardRobotics\Sensors\MSA311\DataObjects;
 
-use BareMetal\DataObjects\DataRegister;
+
+use BareMetal\Circuits\DataRegister;
 
 /**
  * INT_SET_1 (0x17) — new-data and freefall interrupt enables.
