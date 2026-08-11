@@ -3,57 +3,33 @@
 namespace DeptOfScrapyardRobotics\Sensors\MSA311\Enums;
 
 /**
- * Writable register addresses for the MSA311.
+ * MSA311 register map (Adafruit MSA3xx / PARTID-compatible).
  */
 enum MSA311OpCode: int
 {
-    // Writing bit 2 high issues a soft reset over I2C.
-    case SOFT_RESET = 0x00;
+    /** Part / WHO_AM_I identity register — expect 0x13. */
+    case PARTID_REGISTER = 0x01;
 
-    // Device identification — PART_ID returns 0x13
-    case PART_ID = 0x01;
+    case OUT_X_L_REGISTER = 0x02;
+    case OUT_X_H_REGISTER = 0x03;
+    case OUT_Y_L_REGISTER = 0x04;
+    case OUT_Y_H_REGISTER = 0x05;
+    case OUT_Z_L_REGISTER = 0x06;
+    case OUT_Z_H_REGISTER = 0x07;
 
-    // Acceleration output — 16-bit, left-justified, two's complement (little-endian pairs)
-    case ACC_X_LSB = 0x02;
-    case ACC_X_MSB = 0x03;
-    case ACC_Y_LSB = 0x04;
-    case ACC_Y_MSB = 0x05;
-    case ACC_Z_LSB = 0x06;
-    case ACC_Z_MSB = 0x07;
+    case MOTION_INT_REGISTER = 0x09;
+    case DATA_INT_REGISTER = 0x0A;
+    case CLICK_STATUS_REGISTER = 0x0B;
 
-    // Status registers
-    case MOTION_INTERRUPT = 0x09;
-    case DATA_INTERRUPT = 0x0A;
-    case TAP_ACTIVE_STATUS = 0x0B;
-    case ORIENTATION_STATUS = 0x0C;
+    case RES_RANGE_REGISTER = 0x0F;
+    case ODR_REGISTER = 0x10;
+    case POWER_MODE_REGISTER = 0x11;
 
-    // RANGE_RESOLUTION: bits [1:0] full-scale range, bits [3:2] resolution.
-    case RANGE_RESOLUTION = 0x0F;
+    case INT_SET0_REGISTER = 0x16;
+    case INT_SET1_REGISTER = 0x17;
+    case INT_MAP0_REGISTER = 0x19;
+    case INT_MAP1_REGISTER = 0x1A;
 
-    // ODR: bits [3:0] output data rate, bits [7:5] per-axis disable flags.
-    case ODR = 0x10;
-
-    // POWER_MODE_BANDWIDTH: bits [7:6] power mode, bits [4:1] low-power bandwidth.
-    case POWER_MODE_BANDWIDTH = 0x11;
-
-    // SWAP_POLARITY: per-axis polarity inversion and X/Y swap.
-    case SWAP_POLARITY = 0x12;
-
-    // INT_SET_0: orientation / tap / per-axis active interrupt enables.
-    case INT_SET_0 = 0x16;
-
-    // INT_SET_1: new-data and freefall interrupt enables.
-    case INT_SET_1 = 0x17;
-
-    // INT_MAP_0: routes orientation / tap / active / freefall interrupts to INT1.
-    case INT_MAP_0 = 0x19;
-
-    // INT_MAP_1: routes the new-data interrupt to INT1.
-    case INT_MAP_1 = 0x1A;
-
-    // TAP_DURATION: tap quiet / shock timing and double-tap window.
-    case TAP_DURATION = 0x2A;
-
-    // TAP_THRESHOLD: bits [4:0] tap detection threshold.
-    case TAP_THRESHOLD = 0x2B;
+    case TAP_DUR_REGISTER = 0x2A;
+    case TAP_TH_REGISTER = 0x2B;
 }

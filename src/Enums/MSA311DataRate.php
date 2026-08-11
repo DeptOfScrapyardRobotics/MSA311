@@ -3,42 +3,19 @@
 namespace DeptOfScrapyardRobotics\Sensors\MSA311\Enums;
 
 /**
- * Output data rate (ODR) — stored in ODR (0x10) bits [3:0].
+ * Output data rate — ODR bits [3:0].
  */
 enum MSA311DataRate: int
 {
-    case HZ1 = 0x00;
-    case HZ1_95 = 0x01;
-    case HZ3_9 = 0x02;
-    case HZ7_81 = 0x03;
-    case HZ15_63 = 0x04;
-    case HZ31_25 = 0x05;
-    case HZ62_5 = 0x06;
-    case HZ125 = 0x07;
-    case HZ250 = 0x08;
-    case HZ500 = 0x09;
-    case HZ1000 = 0x0A;
-
-    /** Nominal output data rate in Hz. */
-    public function hz(): float
-    {
-        return match ($this) {
-            self::HZ1 => 1.0,
-            self::HZ1_95 => 1.95,
-            self::HZ3_9 => 3.9,
-            self::HZ7_81 => 7.81,
-            self::HZ15_63 => 15.63,
-            self::HZ31_25 => 31.25,
-            self::HZ62_5 => 62.5,
-            self::HZ125 => 125.0,
-            self::HZ250 => 250.0,
-            self::HZ500 => 500.0,
-            self::HZ1000 => 1000.0,
-        };
-    }
-
-    public function toBits(): string
-    {
-        return sprintf('%04b', $this->value);
-    }
+    case RATE_1_HZ = 0b0000;
+    case RATE_1_95_HZ = 0b0001;
+    case RATE_3_9_HZ = 0b0010;
+    case RATE_7_81_HZ = 0b0011;
+    case RATE_15_63_HZ = 0b0100;
+    case RATE_31_25_HZ = 0b0101;
+    case RATE_62_5_HZ = 0b0110;
+    case RATE_125_HZ = 0b0111;
+    case RATE_250_HZ = 0b1000;
+    case RATE_500_HZ = 0b1001;
+    case RATE_1000_HZ = 0b1010;
 }

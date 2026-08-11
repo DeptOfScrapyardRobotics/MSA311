@@ -1,10 +1,11 @@
 {
     "name": "dept-of-scrapyard-robotics/msa311",
-    "description": "Drive MSA311 accelerometers over I2C with PHP",
+    "description": "Drive MSA311 3-axis accelerometers over I2C with PHP",
     "type": "library",
-    "version": "0.5.0",
+    "version": "0.7.0",
     "keywords": [
-        "framework",
+        "msa311",
+        "accelerometer",
         "scrapyard-io"
     ],
     "license": "MIT",
@@ -16,19 +17,17 @@
         }
     ],
     "require": {
-        "php": "^8.3",
-        "waveforms/i2c": "^0.5.0",
-        "bare-metal/circuits": "^0.5.0",
-        "bare-metal/sensors": "^0.5.0",
-        "scrapyard-io/nuts-and-bolts": "^0.5.0"
+        "php": "^8.4|^8.5|^8.6",
+        "fabricate/nuts-and-bolts": "^0.7.0",
+        "gpio/circuits": "^0.7.0",
+        "gpio/contracts": "^0.7.0",
+        "gpio/digital": "^0.7.0",
+        "gpio/i2c": "^0.7.0",
+        "waveforms/contracts": "^0.7.0"
     },
     "suggest": {
-        "ext-posi": "^0.4.0",
-        "ext-ftdi": "^0.4.0",
-        "microscrap/posix": "^0.5.0",
-        "microscrap/mpsse": "^0.5.0",
-        "waveforms/digital": "^0.5.0",
-        "waveforms/i2c": "^0.5.0"
+        "microscrap/i2c": "^0.7.0 - POSIX I2C",
+        "microscrap/mpsse": "^0.7.0 - I2C over FTDI MPSSE"
     },
     "autoload": {
         "psr-4": {
@@ -38,6 +37,16 @@
     "autoload-dev": {
         "psr-4": {
             "DeptOfScrapyardRobotics\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.7.x-dev"
+        },
+        "scrapyard-io": {
+            "providers": [
+                "DeptOfScrapyardRobotics\\Sensors\\MSA311\\MSA311ServiceProvider"
+            ]
         }
     },
     "config": {

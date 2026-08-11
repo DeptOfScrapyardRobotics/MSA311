@@ -2,12 +2,17 @@
 
 namespace DeptOfScrapyardRobotics\Sensors\MSA311;
 
-use BareMetal\Contracts\Sensors\SensorException;
+use GeneralPurposeIO\Contracts\Circuits\CircuitException;
 
-class MSA311Exception extends SensorException
+class MSA311Exception extends CircuitException
 {
-    public static function invalidChipId(int $chip_id): static
+    public static function transportMissingProtocol(): static
     {
-        return new static("Invalid MSA311 Chip ID — expected 0x13, got {$chip_id}");
+        return new static('MSA311 devices require an I2C capable connection.');
+    }
+
+    public static function invalidChipId(int $chip_id, int $expected_id): static
+    {
+        return new static("Invalid MSA311 PARTID — expected {$expected_id}, got {$chip_id}");
     }
 }

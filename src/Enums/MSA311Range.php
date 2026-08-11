@@ -3,51 +3,38 @@
 namespace DeptOfScrapyardRobotics\Sensors\MSA311\Enums;
 
 /**
- * Measurement full-scale range — stored in RANGE_RESOLUTION (0x0F) bits [1:0].
+ * Full-scale range — RESRANGE bits [1:0].
  *
- * The MSA311 exposes a fixed 12-bit data field inside the 16-bit register
- * word. The scale factor is the LSB-per-g divisor applied after shifting that
- * field into position (see {@see MSA311Resolution::rightShift()}).
+ * Adafruit scale: 14-bit left-aligned samples divided by lsbPerG() yield g.
  */
 enum MSA311Range: int
 {
-    /** ±2 g */
-    case G2 = 0x00;
-
-    /** ±4 g */
-    case G4 = 0x01;
-
-    /** ±8 g */
-    case G8 = 0x02;
-
-    /** ±16 g */
-    case G16 = 0x03;
+    case G2 = 0b00;
+    case G4 = 0b01;
+    case G8 = 0b10;
+    case G16 = 0b11;
 
     /**
-     * Counts-per-g divisor for the 12-bit extracted sample word.
+     * Divisor for 14-bit signed counts → g (Adafruit MSA301/MSA311).
      */
-    public function scaleFactor(): float
+    public function lsbPerG(): float
     {
         return match ($this) {
-            self::G2 => 1024.0,
-            self::G4 => 512.0,
-            self::G8 => 256.0,
-            self::G16 => 128.0,
+            self::G2 => 4096.0,
+            self::G4 => 2048.0,
+            self::G8 => 1024.0,
+            self::G16 => 512.0,
         };
     }
 
-    /** Full-scale magnitude in g. */
-    public function g(): int
+    /**
+     * Approximate mg per LSB at 14-bit resolution.
+     */
+    public function mgPerLsb(): float
     {
-        return match ($this) {
-            self::G2 => 2,
-            self::G4 => 4,
-            self::G8 => 8,
-            self::G16 => 16,
-        };
+        return 1000.0 / $this->lsbPerG();
     }
 
-    /** Human-readable range label. */
     public function label(): string
     {
         return match ($this) {
@@ -56,10 +43,5 @@ enum MSA311Range: int
             self::G8 => '±8g',
             self::G16 => '±16g',
         };
-    }
-
-    public function toBits(): string
-    {
-        return sprintf('%02b', $this->value);
     }
 }
